@@ -1,0 +1,574 @@
+:root {
+    --primary: #92051A;
+    --primary-light: #E20380;
+    --bg-page: #f4f5f7;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-page); color: var(--text-dark); line-height: 1.5; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* HEADER */
+.top-header { background: var(--white); padding: 15px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+.header-content { display: flex; justify-content: space-between; align-items: center; }
+.logo-area { display: flex; align-items: center; gap: 15px; }
+.logo-img { width: 50px; height: 50px; object-fit: contain; border-radius: 8px; }
+.logo-text h1 { font-size: 16px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+.logo-text p { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+
+.text-normal {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.nav-menu { display: flex; align-items: center; gap: 15px; }
+.nav-item { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer; }
+.nav-item:hover { color: var(--primary); background-color: #f9fafb; }
+.nav-item.active { background-color: #fce8eb; color: var(--primary); }
+
+/* UTILITY CLASSES */
+.page-view { display: none; }
+.page-view.active { display: block; }
+
+/* GARIS PEMISAH */
+.garis-pemisah {
+    width: 100%;    
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 40px 0;
+}
+
+/* =========================================
+   VIEW 1: MAIN PROFIL (REGULAR)
+   ========================================= */
+   
+.hero-section {
+    background: var(--primary);
+    border-radius: 12px; 
+    padding: 50px 40px; 
+    color: var(--white); 
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden; 
+    transition: all 0.3s ease;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(to right, rgba(106, 18, 34, 0.95) 0%, rgba(106, 18, 34, 0.7) 45%, rgba(106, 18, 34, 0.1) 100%), 
+                      url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center right;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 65%; 
+}
+
+.hero-section:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.hero-badge { display: inline-block; background: rgba(255, 255, 255, 0.2); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 20px; }
+.hero-section h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
+.hero-section p { font-size: 16px; margin-bottom: 30px; line-height: 1.6; opacity: 0.95; }
+.hero-tags { display: flex; gap: 15px; flex-wrap: wrap; }
+.tag { background: rgba(255, 255, 255, 0.15); padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.hero-tags:hover { gap: 20px; transition: all 0.3s ease; }
+
+/* INFO CARDS */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.info-card { 
+    background: var(--white); 
+    border: 1px solid var(--border); 
+    border-radius: 12px; 
+    padding: 30px; 
+    display: flex; 
+    gap: 20px; 
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.info-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+}
+.info-card:nth-child(1)::before { background: var(--primary); }
+.info-card:nth-child(2)::before { background: var(--primary-light); }
+
+.info-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); transform: translateY(-3px); }
+
+.icon-box { width: 40px; height: 40px; background: #fdf2f4; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.info-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: var(--text-dark); }
+.info-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+.section-title { font-size: 24px; font-weight: 800; margin-top: 40px; margin-bottom: 5px; }
+.section-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+
+/* TEACHER CARDS */
+.teacher-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.teacher-card { 
+    background: var(--white); 
+    border: 1px solid var(--border); 
+    border-top: 4px solid var(--primary);
+    border-radius: 12px; 
+    padding: 25px 15px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    transition: all 0.3s ease;
+}
+.teacher-card:hover {
+    box-shadow: 0 8px 16px rgba(122, 26, 43, 0.15);
+    transform: translateY(-5px);
+    border-color: var(--primary-light);
+}
+.teacher-avatar { width: 80px; height: 80px; border-radius: 50%; background: #e5e7eb; object-fit: cover; margin-bottom: 15px; transition: transform 0.3s ease; }
+.teacher-card:hover .teacher-avatar { transform: scale(1.08); }
+.teacher-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+.teacher-role { font-size: 12px; font-weight: 600; color: var(--primary); margin-top: 2px; margin-bottom: 10px; }
+.teacher-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+/* UNIFORM SECTION */
+.uniform-section { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin-top: 20px; }
+.uniform-title { font-size: 22px; font-weight: 800; margin-bottom: 5px; }
+.uniform-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 25px; }
+.uniform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.uniform-img { width: 100%; height: 485px; object-fit: cover; object-position: top center; border-radius: 8px; background: #e5e7eb; transition: transform 0.3s ease; }
+.uniform-img:hover { transform: scale(1.03); transition: transform 0.3s ease; }
+.uniform-caption { text-align: center; font-size: 15px; font-weight: 700; color: var(--text-dark); margin-top: 15px; }
+
+/* FACILITIES */
+.facilities-section { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin-top: 20px; margin-bottom: 40px; }
+.facilities-header p { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+.facilities-header h2 { font-size: 24px; font-weight: 800; margin-bottom: 5px; }
+.facilities-header span { font-size: 14px; color: var(--text-muted); display: block; margin-bottom: 25px; }
+.facility-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.facility-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background: #e5e7eb; transition: transform 0.3s ease; }
+.facility-item:hover .facility-img { transform: scale(1.03); }
+.facility-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.facility-item p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* =========================================
+   VIEW 2: BILINGUAL CLASS
+   ========================================= */
+   
+.hero-bilingual {
+    background: #9ca3af;
+    border-radius: 12px; 
+    padding: 50px 40px; 
+    color: var(--white); 
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hero-bilingual::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(to right, rgba(156, 163, 175, 0.95) 0%, rgba(156, 163, 175, 0.7) 45%, rgba(156, 163, 175, 0.1) 100%), 
+    url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center right;
+    z-index: 1;
+}
+
+.hero-bilingual-content {
+    position: relative;
+    z-index: 2;
+    max-width: 65%; 
+}
+
+.hero-bilingual:hover { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); transform: translateY(-5px); }
+.hero-bilingual .hero-badge { background: rgba(255, 255, 255, 0.3); }
+.hero-bilingual h1 { font-size: 42px; font-weight: 800; margin-bottom: 10px; line-height: 1.1; }
+.hero-bilingual p { font-size: 16px; margin-bottom: 0; line-height: 1.6; }
+
+/* BILINGUAL FEATURE CARDS */
+.bilingual-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+.b-feature-card { 
+    border-radius: 12px; 
+    padding: 25px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: left; 
+    text-align: left; 
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.b-feature-card:nth-child(1) { background-color: #fff0f5; border-color: #fbcfe8; }
+.b-feature-card:nth-child(1) .icon-box { background-color: #f472b6; color: white; }
+
+.b-feature-card:nth-child(2) { background-color: #eff6ff; border-color: #bfdbfe; }
+.b-feature-card:nth-child(2) .icon-box { background-color: #60a5fa; color: white; }
+
+.b-feature-card:nth-child(3) { background-color: #fffbeb; border-color: #fde68a; }
+.b-feature-card:nth-child(3) .icon-box { background-color: #fbbf24; color: white; }
+
+.b-feature-card:nth-child(4) { background-color: #f0fdf4; border-color: #bbf7d0; }
+.b-feature-card:nth-child(4) .icon-box { background-color: #4ade80; color: white; }
+
+.b-feature-card:hover { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); transform: translateY(-5px); }
+.b-feature-card .icon-box { margin-bottom: 15px; }
+.b-feature-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; color: var(--text-dark); }
+.b-feature-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* MODULES */
+.modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+.module-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 20px; display: flex; gap: 15px; align-items: flex-start; transition: all 0.3s ease; }
+.module-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
+.module-bar { width: 8px; height: 40px; border-radius: 4px; flex-shrink: 0; }
+.module-bar.gray { background: #9ca3af; }
+.module-bar.pink { background: #f472b6; }
+.module-content h4 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+.module-content p { font-size: 13px; color: var(--text-muted); }
+
+/* UNIFORM BILINGUAL */
+.b-uniform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+.b-uniform-img { width: 100%; height: 485px; object-fit: cover; border-radius: 8px; background: #e5e7eb; transition: transform 0.3s ease; }
+.b-uniform-img:hover { transform: scale(1.03); transition: transform 0.3s ease; }
+
+/* LOGO MEANING SECTION */
+.logo-meaning-section { margin-top: 30px; margin-bottom: 40px; }
+.logo-meaning-header { margin-bottom: 20px; }
+.logo-meaning-header h2 { font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 5px; }
+.logo-meaning-header p { font-size: 14px; color: var(--text-muted); }
+
+.logo-meaning-container { display: flex; gap: 20px; align-items: stretch; }
+.logo-meaning-container .logo-carousel { margin-top: 0; flex-shrink: 0; }
+
+.meaning-content-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+}
+
+.meaning-card {
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+/* =========================================
+   MAKNA LOGO (VIEW 1 - MAIN)
+   ========================================= */
+.meaning-card:nth-child(odd) { 
+    background: #fdf2f4; 
+    border-left-color: var(--primary); 
+}
+.meaning-card:nth-child(even) { 
+    background: #fdf2fa; 
+    border-left-color: var(--primary-light); 
+}
+
+.meaning-card h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.meaning-card:nth-child(even) h4 { color: var(--primary-light); }
+.meaning-card p { font-size: 13px; color: var(--text-dark); line-height: 1.6; }
+.meaning-card:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transform: translateY(-3px); }
+
+
+/* =========================================
+   MAKNA LOGO (VIEW 2 - BILINGUAL) - UPDATED WARNA ABU-ABU
+   ========================================= */
+.meaning-card.bi-theme:nth-child(odd) { 
+    background: #fff1f2; 
+    border-left-color: #f472b6; 
+}
+.meaning-card.bi-theme:nth-child(odd) h4 {
+    color: #be185d;
+}
+
+/* Card Genap Bilingual: Abu-abu kebiruan (#A1A4B0) */
+.meaning-card.bi-theme:nth-child(even) { 
+    background: #f4f5f7; /* Background abu-abu sangat pudar */
+    border-left-color: #A1A4B0; /* Border abu-abu kebiruan */
+}
+.meaning-card.bi-theme:nth-child(even) h4 { 
+    color: #6b7280; /* Judul abu-abu gelap */
+}
+
+/* Hover untuk Card Genap Bilingual */
+.meaning-card.bi-theme:nth-child(even):hover {
+    background: #A1A4B0;
+    box-shadow: 0 4px 12px rgba(161, 164, 176, 0.4);
+}
+.meaning-card.bi-theme:nth-child(even):hover h4,
+.meaning-card.bi-theme:nth-child(even):hover p {
+    color: white; /* Teks jadi putih saat di-hover */
+}
+
+
+/* LOGO CAROUSEL */
+.logo-carousel { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin-top: 20px; width: 250px; text-align: center; display: flex; flex-direction: column; justify-content: space-between;}
+.logo-carousel img { width: 200px; height: 200px; object-fit: contain; margin: 0 auto 20px auto; justify-content: center; align-items: center; gap: 20px; }
+.carousel-controls { display: flex; justify-content: center; align-items: center; gap: 15px; color: var(--text-muted); }
+.carousel-controls i { font-size: 12px; cursor: pointer; padding: 5px; transition: color 0.2s; }
+.carousel-controls i:hover { color: var(--primary); }
+.dots { display: flex; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; }
+.dot.active { background: var(--primary); }
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer { background: #131c2e; color: var(--white); padding: 30px 0; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; }
+.footer-left { display: flex; align-items: center; gap: 15px; }
+.footer-logo { width: 60px; height: 60px; object-fit: contain; border-radius: 8px; }
+.footer-left h4 { font-size: 16px; font-weight: 700; line-height: 1.2; }
+.footer-left p { font-size: 14px; font-weight: 500; margin-top: 4px; }
+
+.footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+.footer-socials { display: flex; flex-direction: row; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.footer-socials a { color: #9ca3af; font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.3s ease; }
+.footer-socials a i { font-size: 18px; width: 20px; text-align: center; }
+.footer-socials a:hover { color: var(--white); }
+.footer-socials a:hover .fa-instagram { color: #E1306C; }
+.footer-right p { font-size: 14px; color: #9ca3af; text-align: right; line-height: 1.6; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .info-grid, .teacher-grid, .uniform-grid, .facility-grid, .bilingual-features-grid, .modules-grid, .b-uniform-grid { grid-template-columns: 1fr; }
+    .header-content, .footer-content { flex-direction: column; gap: 15px; text-align: center; }
+    .nav-menu { flex-wrap: wrap; justify-content: center; }
+    .footer-left { flex-direction: column; }
+    
+    .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+    .footer-socials { justify-content: center; }
+    .footer-right p { text-align: center; }
+    
+    .logo-meaning-container { flex-direction: column; }
+    .logo-meaning-container .logo-carousel { width: 100%; }
+    .meaning-content-box { grid-template-columns: 1fr; }
+    
+    /* Mobile Hero Fixes */
+    .hero-section, .hero-bilingual { padding: 30px 20px; }
+    .hero-content, .hero-bilingual-content { max-width: 100%; }
+    .hero-section::before, .hero-bilingual::before { 
+        background-position: center;
+        opacity: 0.4;
+    }
+
+    /* Perbaikan Gambar Seragam di Mobile */
+    .uniform-img, .b-uniform-img { height: 380px; }
+}
+
+/* ==============================================================
+   PREMIUM DARK MODE (CHARCOAL & RUBY THEME)
+   Didesain khusus menyesuaikan class dari file CSS kamu
+   ============================================================== */
+
+/* 1. Variabel Dasar Mode Gelap */
+body.dark-mode {
+  background-color: #1a1a1e !important; /* Warna Charcoal Deep */
+  color: #e4e4e7 !important;
+  
+  /* Timpa variabel root milikmu */
+  --bg-page: #1a1a1e !important;
+  --white: #242429 !important; /* Warna dasar kotak (Card) */
+  --text-dark: #ffffff !important; /* Teks gelap jadi putih */
+  --text-muted: #a1a1aa !important; /* Teks abu-abu disesuaikan */
+  --border: #333338 !important; /* Garis tepi kotak */
+}
+
+/* 2. Header & Navigasi */
+body.dark-mode .top-header {
+  background-color: #121215 !important; /* Header lebih gelap dari background */
+  border-bottom: 1px solid #333338 !important;
+}
+
+/* Tulisan "SMK Negeri 2 Balikpapan" di header jadi putih */
+body.dark-mode .logo-text p {
+  color: #ffffff !important; 
+}
+
+body.dark-mode .nav-item {
+  color: #a1a1aa !important;
+}
+body.dark-mode .nav-item:hover {
+  color: var(--primary-light) !important;
+  background-color: #2a2a30 !important;
+}
+body.dark-mode .nav-item.active {
+  background-color: rgba(146, 5, 26, 0.2) !important; /* Merah transparan */
+  color: var(--primary-light) !important;
+}
+
+/* 3. Banner Hero (Warna Merah Tetap Utuh) */
+/* Kita biarkan hero-section tetap memiliki warna aslinya */
+
+/* Tag "Otomasi Kantor, Public Relations, dll" di dalam Hero */
+body.dark-mode .tag,
+body.dark-mode .hero-badge {
+  background: rgba(255, 255, 255, 0.15) !important; /* Dibuat transparan agar teks terbaca */
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 4. Kotak Info (Deskripsi & Sejarah) */
+body.dark-mode .info-card {
+  background-color: #242429 !important;
+  border: 1px solid #333338 !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important; /* Shadow elegan */
+}
+
+/* Garis warna merah/pink di atas info-card tetap menyala */
+body.dark-mode .info-card:nth-child(1)::before { background: var(--primary) !important; }
+body.dark-mode .info-card:nth-child(2)::before { background: var(--primary-light) !important; }
+
+/* Ikon bulat di info-card */
+/* Kotak Ikon Pertama (Deskripsi) -> Warna Merah (Sesuai garis atas) */
+body.dark-mode .info-card:nth-child(1) .icon-box {
+  background-color: var(--primary) !important; /* Warna Merah */
+  color: #ffffff !important; /* Teks/Angka jadi Putih */
+}
+/*  Kotak Ikon Kedua (Sejarah) -> Warna Pink (Sesuai garis atas) */
+body.dark-mode .info-card:nth-child(2) .icon-box {
+  background-color: var(--primary-light) !important; /* Warna Pink */
+  color: #ffffff !important; /* Teks/Angka jadi Putih */
+}
+
+/* 5. Kartu Guru (Teacher Card) */
+body.dark-mode .teacher-card {
+  background-color: #242429 !important;
+  border: 1px solid #333338 !important;
+  border-top: 4px solid var(--primary) !important; /* Garis atas merah tetap ada */
+}
+
+body.dark-mode .teacher-card:hover {
+  border-color: var(--primary-light) !important;
+  box-shadow: 0 8px 25px rgba(226, 3, 128, 0.15) !important; /* Shadow pink saat di-hover */
+}
+
+body.dark-mode .teacher-avatar {
+  background-color: #333338 !important; /* Warna background avatar */
+}
+
+/* 6. Bagian Seragam & Fasilitas */
+body.dark-mode .uniform-section,
+body.dark-mode .facilities-section {
+  background-color: #242429 !important;
+  border: 1px solid #333338 !important;
+}
+
+body.dark-mode .uniform-img,
+body.dark-mode .facility-img {
+  background-color: #333338 !important;
+}
+
+/* 7. Makna Logo */
+body.dark-mode .meaning-content-box {
+  background-color: #1f1f23 !important;
+  border: 1px solid #333338 !important;
+}
+
+body.dark-mode .logo-carousel {
+  background-color: #242429 !important;
+  border: 1px solid #333338 !important;
+}
+
+/* Kotak dalam Makna Logo (Merah & Pink) */
+body.dark-mode .meaning-card:nth-child(odd) {
+  background: #2c1e22 !important; /* Merah sangat gelap */
+  border-left: 4px solid var(--primary) !important;
+}
+body.dark-mode .meaning-card:nth-child(odd) h4 {
+  color: #ff6b81 !important; /* Teks judul jadi merah terang */
+}
+
+body.dark-mode .meaning-card:nth-child(even) {
+  background: #2c1e27 !important; /* Pink sangat gelap */
+  border-left: 4px solid var(--primary-light) !important;
+}
+body.dark-mode .meaning-card:nth-child(even) h4 {
+  color: #ff85c8 !important; /* Teks judul jadi pink terang */
+}
+
+/* Makna Logo (Bilingual - Abu-abu) */
+body.dark-mode .meaning-card.bi-theme:nth-child(odd) {
+  background: #2c1e27 !important;
+  border-left: 4px solid var(--primary-light) !important;
+}
+body.dark-mode .meaning-card.bi-theme:nth-child(even) {
+  background: #242429 !important;
+  border-left: 4px solid #6b7280 !important;
+}
+
+/* Hover efek pada Makna Logo */
+body.dark-mode .meaning-card:hover {
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.05) !important;
+  transform: translateY(-3px);
+}
+
+/* 8. Bilingual Features (Warna Kotak Disesuaikan Gelap) */
+body.dark-mode .b-feature-card:nth-child(1) { background-color: #2c1e27 !important; border-color: #4a2b3b !important; }
+body.dark-mode .b-feature-card:nth-child(2) { background-color: #1e222c !important; border-color: #2b364a !important; }
+body.dark-mode .b-feature-card:nth-child(3) { background-color: #2c271e !important; border-color: #4a3d2b !important; }
+body.dark-mode .b-feature-card:nth-child(4) { background-color: #1e2c22 !important; border-color: #2b4a35 !important; }
+
+body.dark-mode .module-card {
+  background-color: #242429 !important;
+  border: 1px solid #333338 !important;
+}
+
+/* 9. Footer */
+body.dark-mode .site-footer {
+  background-color: #121215 !important; /* Footer kembali hitam pekat */
+}
+
+/* ==============================================================
+   PERLINDUNGAN WARNA & TEKS
+   ============================================================== */
+
+/* Paksa semua teks judul & paragraf jadi putih (kecuali yang diwarnai khusus) */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode p, 
+body.dark-mode span,
+body.dark-mode a {
+  color: #e4e4e7 !important;
+}
+
+/* Tapi khusus judul (h1-h4) buat lebih putih */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4 {
+  color: #ffffff !important;
+}
+
+/* Memastikan teks di Banner Hero (merah) tetap putih cerah */
+body.dark-mode .hero-section h1,
+body.dark-mode .hero-section p,
+body.dark-mode .hero-bilingual h1,
+body.dark-mode .hero-bilingual p {
+  color: #ffffff !important;
+}
+
+body.dark-mode #theme-toggle i {
+  color: #ffd700 !important; 
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>html{background:#f4f5f7;}</style>
+    <title>Prospek Kerja - Manajemen Perkantoran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css"> <!-- Sesuaikan nama file CSS kamu -->
+<script src="js/script.js"></script> <!-- Sesuaikan letak folder script.js kamu -->
+    <style>
+        :root {
+            --primary: #7a1a2b;
+            --primary-light: #9a2a3c;
+            --bg-page: #f4f5f7;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-page); color: var(--text-dark); line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER */
+        .top-header { background: var(--white); padding: 15px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-img { width: 50px; height: 50px; object-fit: contain; border-radius: 8px; }
+        .logo-text h1 { font-size: 16px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+        .logo-text p { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+        .nav-menu { display: flex; align-items: center; gap: 15px; }
+        .nav-item { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer; }
+        .nav-item:hover { color: var(--primary); background-color: #f9fafb; }
+        .nav-item.active { background-color: #fce8eb; color: var(--primary); }
+ .text-normal {
+            font-weight: lighter; 
+            font-size: 13px;  
+            letter-spacing: 0.5px;
+        }
+        .garis-pemisah {
+    width: 100%;    
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 40px 0;
+        }
+        /* PAGE TITLE */
+        .page-header { text-align: center; padding: 50px 20px 30px; }
+        .page-header h2 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .page-header h1 { font-size: 36px; font-weight: 800; color: var(--text-dark); margin-bottom: 15px; }
+        .page-header p { font-size: 15px; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+        /* CAREER GRID */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .career-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .career-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .career-icon {
+            color: var(--primary);
+            font-size: 40px; 
+            flex-shrink: 0;
+            width: 50px;
+            text-align: center;
+        }
+
+        .career-content h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .career-content p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .garis-pemisah {
+    width: 100%;    
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 40px 0;
+        }
+
+        /* =========================================
+           FOOTER (UPDATED WITH SOCIALS)
+           ========================================= */
+        .site-footer { background: #131c2e; color: var(--white); padding: 30px 0; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; }
+        .footer-left { display: flex; align-items: center; gap: 15px; }
+        .footer-logo { width: 60px; height: 60px; object-fit: contain; border-radius: 8px; }
+        .footer-left h4 { font-size: 16px; font-weight: 700; line-height: 1.2; }
+        .footer-left p { font-size: 14px; font-weight: 500; margin-top: 4px; }
+        
+        .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+
+        .footer-socials { 
+            display: flex; 
+            flex-direction: row; 
+            gap: 15px; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            justify-content: flex-end;
+        }
+
+        .footer-socials a { 
+            color: #9ca3af; 
+            font-size: 14px; 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: color 0.3s ease; 
+        }
+        
+        .footer-socials a i { font-size: 18px; width: 20px; text-align: center; }
+        .footer-socials a:hover { color: var(--white); }
+        .footer-socials a:hover .fa-instagram { color: #E1306C; }
+        
+        .footer-right p { font-size: 14px; color: #9ca3af; text-align: right; line-height: 1.6; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) { 
+            .career-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+        
+        @media (max-width: 768px) {
+            .header-content, .footer-content { flex-direction: column; text-align: center; gap: 15px; }
+            .nav-menu { flex-wrap: wrap; justify-content: center; }
+            .career-grid { grid-template-columns: 1fr; }
+            .footer-left { flex-direction: column; }
+            
+            /* Mobile Footer */
+            .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+            .footer-socials { justify-content: center; flex-direction: column; }
+            .footer-right p { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="container header-content">
+            <div class="logo-area">
+                <img src="assets/LOGO/MP.png" alt="Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1><span class="text-normal">KONSENTRASI KEAHLIAN</span><br>Manajemen Perkantoran</h1>
+                    <p>SMK NEGERI 2 BALIKPAPAN</p>
+                </div>
+            </div>
+<button id="theme-toggle" style="background:none; border:none; cursor:pointer; font-size:18px;">
+    <!-- Baris 32 -->
+    <i id="theme-icon" class="fa-solid fa-moon"></i>
+</button>            
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item"><i class="fa-solid fa-graduation-cap"></i> Profil Jurusan</a>
+                <a href="mapel.html" class="nav-item"><i class="fa-solid fa-book-open"></i> Mata Pelajaran</a>
+                <a href="prospek.html" class="nav-item active"><i class="fa-solid fa-magnifying-glass"></i> Prospek Kerja</a>
+                <a href="pembuat.html" class="nav-item"><i class="fa-solid fa-users"></i> Tim Pembuat</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h2>Karier Masa Depan</h2>
+            <h1>Peluang Kerja & Prospek Lulusan</h1>
+            <p>Lulusan Manajemen Perkantoran SMKN 2 Balikpapan memiliki daya saing kerja luas di instansi pemerintah, BUMN, swasta, hingga industri jasa & perhotelan.</p>
+        </div>
+
+        <div class="career-grid">
+            <!-- Card 1 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-file-signature"></i></div>
+                <div class="career-content">
+                    <h3>Sekretaris Junior</h3>
+                    <p>Membantu pimpinan mengatur jadwal, menyiapkan dokumen, mengelola surat, dan mengatur kegiatan rapat.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="career-content">
+                    <h3>Staf Administrasi</h3>
+                    <p>Mengelola data, menyusun dokumen, mengarsipkan berkas, dan membantu kelancaran kegiatan kantor.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-calculator"></i></div>
+                <div class="career-content">
+                    <h3>Staf Keuangan</h3>
+                    <p>Membantu mencatat transaksi, menyusun laporan keuangan, dan mengelola pemasukan serta pengeluaran.</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                <div class="career-content">
+                    <h3>Staf Personalia</h3>
+                    <p>Mengelola data karyawan, membantu proses rekrutmen, dan mengurus administrasi kepegawaian.</p>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="career-content">
+                    <h3>Staf Pemasaran</h3>
+                    <p>Membantu mempromosikan produk atau jasa, menarik pelanggan, dan mendukung strategi pemasaran.</p>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-folder-open"></i></div>
+                <div class="career-content">
+                    <h3>Arsiparis</h3>
+                    <p>Mengelola, menyimpan, merawat, dan menata arsip agar dokumen mudah ditemukan saat dibutuhkan.</p>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-bell-concierge"></i></div>
+                <div class="career-content">
+                    <h3>Resepsionis</h3>
+                    <p>Menyambut tamu, memberikan informasi, menerima telepon, dan membantu kebutuhan awal pengunjung.</p>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                <div class="career-content">
+                    <h3>Event Organizer</h3>
+                    <p>Merencanakan dan mengatur acara, mulai dari persiapan, koordinasi panitia, hingga pelaksanaan kegiatan.</p>
+                </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-user-clock"></i></div>
+                <div class="career-content">
+                    <h3>Personal Assistant</h3>
+                    <p>Membantu seseorang atau pemimpin mengatur jadwal, perjalanan, dokumen, dan berbagai kebutuhan pekerjaan.</p>
+                </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="career-content">
+                    <h3>Customer Service</h3>
+                    <p>Melayani pertanyaan, memberikan informasi produk atau jasa, dan membantu menyelesaikan keluhan pelanggan.</p>
+                </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="career-card">
+                <div class="career-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="career-content">
+                    <h3>Teller Bank</h3>
+                    <p>Melayani transaksi nasabah seperti penyetoran, penarikan uang, dan berbagai layanan perbankan di loket.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER (UPDATED WITH SOCIALS) -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <img src="assets/LOGO/MP.png" alt="Logo Footer" class="footer-logo">
+                <div>
+                    <h4>KONSENTRASI KEAHLIAN</h4>
+                    <h4>Manajemen Perkantoran</h4>
+                    <p>SMK NEGERI 2 BALIKPAPAN</p>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="footer-socials">
+                    <a href="https://instagram.com/officialmplb_skada" target="_blank" title="Instagram MP">
+                        <i class="fa-brands fa-instagram"></i> @officialmplb_skada
+                    </a>
+
+                    <a href="https://instagram.com/bilingual_skada" target="_blank" title="Instagram Bilingual">
+                        <i class="fa-brands fa-instagram"></i> @bilingual_skada
+                    </a>
+                </div>
+                <p>© 2026 XI-RPL Skada <br> Created for SMK Negeri 2 Balikpapan Project.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
